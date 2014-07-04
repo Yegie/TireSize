@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tire Size Calculator</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tire_size_enter">Enter Tire Size</string>
+    <string name="tire_size_width">Width</string>
+    <string name="tire_size_percentage">Ratio</string>
+    <string name="tire_size_wheel">Wheel/Rim</string>
+    <string name="new_prompt">Blah Blah Blah</string>
+    <string name="spinner_prompt">Pick One</string>
+
+    <string-array name="width_array">
+        <item>Pick one</item>
+        <item>145</item>
+        <item>155</item>
+        <item>165</item>
+        <item>175</item>
+        <item>185</item>
+        <item>195</item>
+        <item>205</item>
+        <item>215</item>
+        <item>225</item>
+        <item>235</item>
+        <item>245</item>
+        <item>255</item>
+        <item>265</item>
+        <item>275</item>
+        <item>285</item>
+        <item>295</item>
+        <item>305</item>
+        <item>315</item>
+        <item>325</item>
+    </string-array>
+
+    <string-array name="ratio_array">
+        <item>Pick one</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+    </string-array>
+
+    <string-array name="rim_array">
+        <item>Pick one</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>16.5</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+    </string-array>
+
+
+
+</resources>
