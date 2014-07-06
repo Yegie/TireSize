@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class TireSizeActivity extends ActionBarActivity {
@@ -59,6 +60,8 @@ public class TireSizeActivity extends ActionBarActivity {
                 }
             }
         }
+
+        Collections.sort(objs);
 
         adapter.notifyDataSetChanged();
     }

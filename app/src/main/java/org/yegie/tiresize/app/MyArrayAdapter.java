@@ -36,7 +36,7 @@ public class MyArrayAdapter extends ArrayAdapter {
         a_r_r.setText(objs.get(i).current.width+"-"+objs.get(i).current.ratio+"/"+objs.get(i).current.rim);
 
         TextView mph= (TextView) vg.findViewById(R.id.mph);
-        mph.setText("60 mph would be "+String.format("%.2f",objs.get(i).mph)+" mph");
+        mph.setText("50 mph would be "+String.format("%.2f",objs.get(i).mph)+" mph");
 
         TextView miles= (TextView) vg.findViewById(R.id.miles);
         miles.setText("1000 miles would be "+String.format("%.2f",objs.get(i).mileage)+" miles");

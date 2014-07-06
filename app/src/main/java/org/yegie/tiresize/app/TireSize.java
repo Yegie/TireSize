@@ -5,8 +5,9 @@ package org.yegie.tiresize.app;
  */
 public class TireSize{
 
-    int width, ratio;
-    double rim;
+    public int width;
+    public int ratio;
+    public double rim;
 
     public TireSize(){
 
@@ -28,13 +29,14 @@ public class TireSize{
 
     }
 
-    double wall_mm, wall_in;
-    double diameter;
-    double length;
+    public double wall_mm;
+    public double wall_in;
+    public double diameter;
+    public double length;
 
     public void hello(){
-
-        wall_mm=width*ratio/100;
+//      The d is important otherwise the calculation is wrong
+        wall_mm=width*ratio/100d;
         wall_in=wall_mm/25.4;
         diameter=wall_in*2+rim;
         length=Math.PI*diameter;

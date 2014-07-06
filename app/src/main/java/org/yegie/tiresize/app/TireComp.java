@@ -3,15 +3,15 @@ package org.yegie.tiresize.app;
 /**
  * Created by Sergey on 7/4/2014.
  */
-public class TireComp {
+public class TireComp implements Comparable<TireComp>{
 
 
     TireSize userIn;
-    TireSize current;
+    public TireSize current;
 
-    double delta;
-    double mph;
-    double mileage;
+    public double delta;
+    public double mph;
+    public double mileage;
 
     public TireComp(TireSize a, TireSize b){
 
@@ -31,4 +31,14 @@ public class TireComp {
 
     }
 
+    @Override
+    public int compareTo(TireComp another) {
+
+        if(delta==another.delta)
+            return 0;
+        if(delta>another.delta)
+            return 1;
+        else
+            return -1;
+    }
 }
