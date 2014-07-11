@@ -10,6 +10,9 @@
     <string name="tire_size_wheel">Wheel/Rim</string>
     <string name="new_prompt">Blah Blah Blah</string>
     <string name="spinner_prompt">Pick One</string>
+    <string name="more_sizes">Show More</string>
+    <string name="tire_fav">Favorites</string>
+    <string name="tire_all">All tires within 10%</string>
 
     <string-array name="width_array">
         <item>Pick one</item>

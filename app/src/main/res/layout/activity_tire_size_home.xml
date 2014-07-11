@@ -96,13 +96,43 @@
                 android:focusableInTouchMode="false" />
         </LinearLayout>
 
+        <TextView
+            android:text="@string/tire_fav"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextFav"
+            android:background="#ccc"
+            android:gravity="center"/>
+
         <ListView
             android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:id="@+id/listViewFav" />
+
+        <TextView
+            android:text="@string/tire_all"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/TextAll"
+            android:background="#ccc"
+            android:gravity="center"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
             android:id="@+id/listView" />
 
-
-
+        <Button
+            android:text="@string/more_sizes"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/more_stuff"
+            android:background="#edd" />
 
     </LinearLayout>
+
+
 </RelativeLayout>

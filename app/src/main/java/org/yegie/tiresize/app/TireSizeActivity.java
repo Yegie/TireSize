@@ -3,9 +3,11 @@ package org.yegie.tiresize.app;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class TireSizeActivity extends ActionBarActivity {
+public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapter.OnFavoriteClickedListener {
 
     private static final String TAG = TireSizeActivity.class.getSimpleName();
 
@@ -23,13 +25,8 @@ public class TireSizeActivity extends ActionBarActivity {
 
         @Override
         public void onClick(View view) {
-            TextView tv=(TextView)view;
-            String current=tv.getText().toString();
-            String base=getResources().getString(R.string.tire_size_enter);
-            if(current.equals(base))
-                tv.setText(R.string.new_prompt);
-            else
-                tv.setText(base);
+            cube++;
+            updateDisp();
         }
 
     }
@@ -41,6 +38,8 @@ public class TireSizeActivity extends ActionBarActivity {
     public void recalculate(){
         System.out.println("Recalculating wheels");
         objs.clear();
+
+        cube = 1;
 
         TireSize apple = new TireSize(width,ratio,rim);
         for(int i = 0;i<widths.length;i++){
@@ -63,7 +62,21 @@ public class TireSizeActivity extends ActionBarActivity {
 
         Collections.sort(objs);
 
+        updateDisp();
+    }
+
+    public void updateDisp(){
+
+        objsDisp.clear();
+
+        for(int i = 0; i< cube*3; i++){
+            if(i<objs.size())
+                objsDisp.add(objs.get(i));
+
+        }
+
         adapter.notifyDataSetChanged();
+
     }
 
 
@@ -151,7 +164,6 @@ public class TireSizeActivity extends ActionBarActivity {
         }
 
     }
-
     private class RimSelectedListener extends SelectedListener{
 
         @Override
@@ -175,8 +187,13 @@ public class TireSizeActivity extends ActionBarActivity {
 
     ArrayList<String> arr = new ArrayList<String>();
     ArrayList<TireComp> objs = new ArrayList<TireComp>();
+    ArrayList<TireComp> objsDisp = new ArrayList<TireComp>();
+    ArrayList<TireComp> objsFav = new ArrayList<TireComp>();
+    int cube;
     ListView l;
+    ListView fav;
     MyArrayAdapter adapter;
+    MyArrayAdapter adapterFav;
 
     int width;
     int ratio;
@@ -190,8 +207,25 @@ public class TireSizeActivity extends ActionBarActivity {
     }
 
     private void connectArrayAdapter() {
-        adapter = new MyArrayAdapter(this,android.R.layout.simple_list_item_1,objs);
+        adapter = new MyArrayAdapter(this,android.R.layout.simple_list_item_1,objsDisp,this);
         l.setAdapter(adapter);
+    }
+
+    private void connectArrayAdapterFav() {
+        adapterFav = new MyArrayAdapter(this,android.R.layout.simple_list_item_1,objsFav,this);
+        fav.setAdapter(adapterFav);
+    }
+
+    @Override
+    public void onFavoriteClicked(TireComp t) {
+        int index=objsFav.indexOf(t);
+
+        if(index>=0)
+            objsFav.remove(index);
+        else
+            objsFav.add(t);
+
+        adapterFav.notifyDataSetChanged();
     }
 
     int don = 0;
@@ -201,7 +235,7 @@ public class TireSizeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tire_size_home);
 
-        View view=findViewById(R.id.TextPrompt);
+        View view=findViewById(R.id.more_stuff);
         view.setOnClickListener(new PromptClickListener());
 
         Spinner a = (Spinner) findViewById(R.id.test_spinner);
@@ -213,9 +247,15 @@ public class TireSizeActivity extends ActionBarActivity {
         Spinner c = (Spinner) findViewById(R.id.test_spinner3);
         c.setOnItemSelectedListener(new RimSelectedListener());
 
+        fav = (ListView) findViewById(R.id.listViewFav);
+
+        connectArrayAdapterFav();
+
         l = (ListView) findViewById(R.id.listView);
 
         connectArrayAdapter();
+
+
 
     }
     @Override
