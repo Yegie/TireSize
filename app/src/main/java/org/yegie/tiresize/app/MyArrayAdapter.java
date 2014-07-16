@@ -56,13 +56,13 @@ public class MyArrayAdapter extends ArrayAdapter {
 
 
         TextView a_r_r= (TextView) vg.findViewById(R.id.width_ratio_rim);
-        a_r_r.setText(objs.get(i).current.width+"-"+objs.get(i).current.ratio+"/"+objs.get(i).current.rim);
+        a_r_r.setText(" "+objs.get(i).current.width+"-"+objs.get(i).current.ratio+"/"+objs.get(i).current.rim);
 
         TextView mph= (TextView) vg.findViewById(R.id.mph);
-        mph.setText("50 mph would be "+String.format("%.2f",objs.get(i).mph)+" mph");
+        mph.setText("    50 mph would be "+String.format("%.2f",objs.get(i).mph)+" mph");
 
         TextView miles= (TextView) vg.findViewById(R.id.miles);
-        miles.setText("1000 miles would be "+String.format("%.2f",objs.get(i).mileage)+" miles");
+        miles.setText("    1000 miles would be "+String.format("%.2f",objs.get(i).mileage)+" miles");
 
         ImageButton fav = (ImageButton) vg.findViewById(R.id.imageButton);
         fav.setOnClickListener(new FavoriteClickListener(i));

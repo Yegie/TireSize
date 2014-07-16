@@ -38,6 +38,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     public void recalculate(){
         System.out.println("Recalculating wheels");
         objs.clear();
+        objsFav.clear();
 
         cube = 1;
 
