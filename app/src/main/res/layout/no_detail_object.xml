@@ -34,10 +34,9 @@
     </LinearLayout>
 
     <ImageButton
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/ic_launcher" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton" />
 
 
 </LinearLayout>

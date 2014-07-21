@@ -38,12 +38,15 @@ public class MyArrayAdapter extends ArrayAdapter {
         public void onClick(View view) {
             TireComp tc=objs.get(index);
 
-            if(listener!=null)
+            if(listener!=null) {
+
                 listener.onFavoriteClicked(tc);
+            }
         }
     }
 
     ViewGroup vg;
+
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent){
@@ -65,16 +68,14 @@ public class MyArrayAdapter extends ArrayAdapter {
         miles.setText("    1000 miles would be "+String.format("%.2f",objs.get(i).mileage)+" miles");
 
         ImageButton fav = (ImageButton) vg.findViewById(R.id.imageButton);
+        if(objs.get(i).fav) {
+            fav.setImageResource(R.drawable.ic_filledstar);
+        }else{
+            fav.setImageResource(R.drawable.ic_unfilledstar);
+        }
         fav.setOnClickListener(new FavoriteClickListener(i));
 
         return vg;
     }
-
-    @Override
-    public void notifyDataSetChanged (){
-        super.notifyDataSetChanged();
-
-    }
-
 
 }

@@ -186,7 +186,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
     }
 
-    ArrayList<String> arr = new ArrayList<String>();
+
     ArrayList<TireComp> objs = new ArrayList<TireComp>();
     ArrayList<TireComp> objsDisp = new ArrayList<TireComp>();
     ArrayList<TireComp> objsFav = new ArrayList<TireComp>();
@@ -203,8 +203,19 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     @Override
     protected void onRestoreInstanceState (Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
-        arr = savedInstanceState.getStringArrayList("aaa");
+        objs = savedInstanceState.getParcelableArrayList("objs");
+        objsDisp = savedInstanceState.getParcelableArrayList("objsDisp");
+        objsFav = savedInstanceState.getParcelableArrayList("objsFav");
         connectArrayAdapter();
+        connectArrayAdapterFav();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle out){
+        super.onSaveInstanceState(out);
+        out.putParcelableArrayList("objs",objs);
+        out.putParcelableArrayList("objsDisp",objsDisp);
+        out.putParcelableArrayList("objsFav",objsFav);
     }
 
     private void connectArrayAdapter() {
@@ -220,12 +231,18 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     @Override
     public void onFavoriteClicked(TireComp t) {
         int index=objsFav.indexOf(t);
+        int index2=objs.indexOf(t);
 
-        if(index>=0)
+        if(index>=0) {
             objsFav.remove(index);
-        else
+            objs.get(index2).fav = false;
+        }
+        else {
+            t.fav = true;
             objsFav.add(t);
-
+            objs.get(index2).fav = true;
+        }
+        adapter.notifyDataSetChanged();
         adapterFav.notifyDataSetChanged();
     }
 
@@ -259,14 +276,6 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
 
     }
-    @Override
-    protected void onSaveInstanceState(Bundle out){
-        super.onSaveInstanceState(out);
-        out.putStringArrayList("aaa" ,arr);
-
-    }
-
-
 
 
     @Override
