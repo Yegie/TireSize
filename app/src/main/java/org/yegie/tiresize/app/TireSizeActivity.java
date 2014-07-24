@@ -35,6 +35,20 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     final int[] ratios = {30,35,40,45,50,55,60,65,70,75,80,85};
     final double[] rims = {12,13,14,15,16,16.5,17,18,19,20,21};
 
+    public void recalculate2(int i, int j, double r, TireSize apple){
+
+        TireSize orange = new TireSize(widths[i], ratios[j], r);
+
+        TireComp pos = new TireComp(apple, orange);
+
+        if (pos.delta <= 0.1) {
+
+            objs.add(pos);
+
+        }
+
+    }
+
     public void recalculate(){
         System.out.println("Recalculating wheels");
         objs.clear();
@@ -45,18 +59,15 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         TireSize apple = new TireSize(width,ratio,rim);
         for(int i = 0;i<widths.length;i++){
             for(int j = 0;j<ratios.length;j++){
-                for(int r = 0;r<rims.length;r++){
+                if(diffRims) {
+                    for (int r = 0; r < rims.length; r++) {
 
-                    TireSize orange = new TireSize(widths[i],ratios[j],rims[r]);
-
-                    TireComp pos = new TireComp(apple,orange);
-
-                    if(pos.delta<=0.1){
-
-                        objs.add(pos);
+                        recalculate2(i,j,rims[r],apple);
 
                     }
-
+                }
+                else{
+                    recalculate2(i,j,rim,apple);
                 }
             }
         }
@@ -116,19 +127,21 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
         }
 
-        public void check(){
-
-            if(
-                    width != 0 &&
-                    ratio != 0 &&
-                    rim != 0
-            )
-                recalculate();
-            else
-                return;
-        }
-
     }
+
+    public void check(){
+
+        if(
+                width != 0 &&
+                        ratio != 0 &&
+                        rim != 0
+                )
+            recalculate();
+        else
+            return;
+    }
+
+
     private class WidthSelectedListener extends SelectedListener{
 
         @Override
@@ -143,7 +156,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
             System.out.println(width+"-"+ratio+"/"+rim);
 
-            super.check();
+            check();
         }
 
     }
@@ -161,7 +174,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
             System.out.println(width+"-"+ratio+"/"+rim);
 
-            super.check();
+            check();
         }
 
     }
@@ -180,7 +193,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
             System.out.println(width+"-"+ratio+"/"+rim);
 
-            super.check();
+            check();
 
         }
 
@@ -286,16 +299,49 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         return true;
     }
 
+    public void resetFav(){
+
+        for(int i = 0; i<objsFav.size();i++){
+            TireComp t = objsFav.get(i);
+            int index2=objs.indexOf(t);
+            objs.get(index2).fav = false;
+        }
+
+        objsFav.clear();
+        adapter.notifyDataSetChanged();
+        adapterFav.notifyDataSetChanged();
+
+    }
+
+    boolean diffRims;
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            Log.d(TAG, "Someone wants settings");
+
+        if (id == R.id.fav_reset) {
+            Log.d(TAG, "Reseting Fav");
+            resetFav();
             return true;
         }
+
+        if (id == R.id.other_rims) {
+            Log.d(TAG, "changing rims boolean");
+            if(diffRims){
+                diffRims = false;
+            }
+            else{
+                diffRims = true;
+            }
+
+            check();
+
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

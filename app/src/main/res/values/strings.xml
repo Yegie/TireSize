@@ -13,6 +13,8 @@
     <string name="more_sizes">Load More</string>
     <string name="tire_fav">Favorites</string>
     <string name="tire_all">All tires within 10%</string>
+    <string name="fav_settings">Reset Favorites</string>
+    <string name="toggle_rims">Toggle Diff Rims</string>
 
     <string-array name="width_array">
         <item>Pick one</item>
