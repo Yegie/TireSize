@@ -1,5 +1,6 @@
 package org.yegie.tiresize.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -234,7 +235,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         out.putParcelableArrayList("objsFav",objsFav);
         out.putInt("width",width);
         out.putInt("ratio",ratio);
-        out.putDouble("rim",rim);
+        out.putDouble("rim", rim);
     }
 
     private void connectArrayAdapter() {
@@ -348,7 +349,26 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
             return true;
         }
 
+        if (id == R.id.share) {
+            Log.d(TAG, "Sharing");
+
+            shareText();
+
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    public void shareText(){
+
+        String text = "Hello World";
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        intent.setType("text/plain");
+        startActivity(intent);
+
     }
 
 }
