@@ -219,6 +219,9 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         objs = savedInstanceState.getParcelableArrayList("objs");
         objsDisp = savedInstanceState.getParcelableArrayList("objsDisp");
         objsFav = savedInstanceState.getParcelableArrayList("objsFav");
+        width = savedInstanceState.getInt("width");
+        ratio = savedInstanceState.getInt("ratio");
+        rim = savedInstanceState.getDouble("rim");
         connectArrayAdapter();
         connectArrayAdapterFav();
     }
@@ -229,6 +232,9 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         out.putParcelableArrayList("objs",objs);
         out.putParcelableArrayList("objsDisp",objsDisp);
         out.putParcelableArrayList("objsFav",objsFav);
+        out.putInt("width",width);
+        out.putInt("ratio",ratio);
+        out.putDouble("rim",rim);
     }
 
     private void connectArrayAdapter() {
