@@ -205,8 +205,8 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     ArrayList<TireComp> objsDisp = new ArrayList<TireComp>();
     ArrayList<TireComp> objsFav = new ArrayList<TireComp>();
     int cube;
-    ListView l;
-    ListView fav;
+    FixedListView l;
+    FixedListView fav;
     MyArrayAdapter adapter;
     MyArrayAdapter adapterFav;
 
@@ -285,11 +285,11 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         Spinner c = (Spinner) findViewById(R.id.test_spinner3);
         c.setOnItemSelectedListener(new RimSelectedListener());
 
-        fav = (ListView) findViewById(R.id.listViewFav);
+        fav = (FixedListView) findViewById(R.id.listViewFav);
 
         connectArrayAdapterFav();
 
-        l = (ListView) findViewById(R.id.listView);
+        l = (FixedListView) findViewById(R.id.listView);
 
         connectArrayAdapter();
 
@@ -362,7 +362,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
     public void shareText(){
 
-        String text = "Hello World";
+        String text = "Sorry but sharing has not yet been added. Eventually you will be able to share your favorites list.";
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT,text);

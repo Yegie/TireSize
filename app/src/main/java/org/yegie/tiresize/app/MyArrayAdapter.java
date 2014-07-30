@@ -47,6 +47,22 @@ public class MyArrayAdapter extends ArrayAdapter {
 
     ViewGroup vg;
 
+    /**
+     * This ust return changing values depending on 'fav' value.
+     *
+     * @param pos
+     * @return
+     */
+    @Override
+    public long getItemId(int pos) {
+        TireComp tireComp=objs.get(pos);
+
+        long hash=((Object)tireComp).hashCode();
+
+        long rc=tireComp.fav ? hash^0xffffffff : hash;
+
+        return rc;
+    }
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent){
