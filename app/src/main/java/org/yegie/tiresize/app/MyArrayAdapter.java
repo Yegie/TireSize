@@ -46,6 +46,7 @@ public class MyArrayAdapter extends ArrayAdapter {
     }
 
     ViewGroup vg;
+    boolean favList;
 
     /**
      * This ust return changing values depending on 'fav' value.
@@ -73,15 +74,27 @@ public class MyArrayAdapter extends ArrayAdapter {
 
         vg = (ViewGroup) inflater.inflate(abc,null);
 
+        TireComp a = objs.get(i);
+
 
         TextView a_r_r= (TextView) vg.findViewById(R.id.width_ratio_rim);
-        a_r_r.setText(" "+objs.get(i).current.width+"-"+objs.get(i).current.ratio+"/"+objs.get(i).current.rim);
+        a_r_r.setText(" "+a.current.width+"-"+a.current.ratio+"/"+TireSizeActivity.fixDec(a.current.rim));
 
-        TextView mph= (TextView) vg.findViewById(R.id.mph);
-        mph.setText("    50 mph would be "+String.format("%.2f",objs.get(i).mph)+" mph");
+        TextView delta= (TextView) vg.findViewById(R.id.delta);
+        double b = Math.round(a.delta*1000)/10.0;
+        delta.setText("    Diff: "+b+"%");
 
-        TextView miles= (TextView) vg.findViewById(R.id.miles);
-        miles.setText("    1000 miles would be "+String.format("%.2f",objs.get(i).mileage)+" miles");
+        if(favList){
+
+            TextView mph= (TextView) vg.findViewById(R.id.mph);
+            mph.setVisibility(View.VISIBLE);
+            mph.setText("    50 mph would be "+String.format("%.2f",a.mph)+" mph");
+
+            TextView miles= (TextView) vg.findViewById(R.id.miles);
+            miles.setVisibility(View.VISIBLE);
+            miles.setText("    1000 miles would be "+String.format("%.2f",a.mileage)+" miles");
+
+        }
 
         ImageButton fav = (ImageButton) vg.findViewById(R.id.imageButton);
         if(objs.get(i).fav) {

@@ -52,8 +52,8 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
     public void recalculate(){
         System.out.println("Recalculating wheels");
+        resetFav();
         objs.clear();
-        objsFav.clear();
 
         cube = 1;
 
@@ -240,11 +240,13 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
     private void connectArrayAdapter() {
         adapter = new MyArrayAdapter(this,android.R.layout.simple_list_item_1,objsDisp,this);
+        adapter.favList = false;
         l.setAdapter(adapter);
     }
 
     private void connectArrayAdapterFav() {
         adapterFav = new MyArrayAdapter(this,android.R.layout.simple_list_item_1,objsFav,this);
+        adapterFav.favList = true;
         fav.setAdapter(adapterFav);
     }
 
@@ -311,7 +313,9 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         for(int i = 0; i<objsFav.size();i++){
             TireComp t = objsFav.get(i);
             int index2=objs.indexOf(t);
-            objs.get(index2).fav = false;
+            if(index2 !=-1){
+                objs.get(index2).fav = false;
+            }
         }
 
         objsFav.clear();
@@ -360,9 +364,24 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         return super.onOptionsItemSelected(item);
     }
 
+    public static String fixDec(double a){
+
+        if(Math.abs(Math.round(a)-a)<0.01){
+            return ""+(int)a;
+        }else{
+            return ""+a;
+        }
+
+    }
+
     public void shareText(){
 
-        String text = "Sorry but sharing has not yet been added. Eventually you will be able to share your favorites list.";
+        String text = "Favorite List for tire "+width+"-"+ratio+"/"+fixDec(rim);
+        for(int i = 0; i < objsFav.size();i++){
+            TireSize a = objsFav.get(i).current;
+            double b = Math.round(objsFav.get(i).delta*1000)/10.0;
+            text = text + "\n "+a.width+"-"+a.ratio+"/"+fixDec(a.rim)+" Diff: "+b+"%";
+        }
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT,text);

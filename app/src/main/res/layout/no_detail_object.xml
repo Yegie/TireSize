@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="fill_parent"
@@ -22,13 +22,21 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/delta"
+            android:background="#fff"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/mph"
+            android:visibility="gone"
             android:background="#fff"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/miles"
+            android:visibility="gone"
             android:background="#fff"/>
 
     </LinearLayout>
