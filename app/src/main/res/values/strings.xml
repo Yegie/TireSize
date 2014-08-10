@@ -16,6 +16,7 @@
     <string name="fav_settings">Reset Favorites</string>
     <string name="toggle_rims">Toggle Diff Rims</string>
     <string name="share">Share Favorites</string>
+    <string name="help">Help</string>
 
     <string-array name="width_array">
         <item>Pick one</item>

@@ -48,6 +48,20 @@ public class TireComp implements Comparable<TireComp>, Parcelable{
     }
 
     @Override
+    public boolean equals(Object t) {
+        TireComp b = (TireComp) t;
+        TireSize a = b.current;
+        TireSize c = current;
+        if(Math.abs(a.rim - c.rim)<0.01 &&
+                a.width == c.width &&
+                a.ratio == c.ratio){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }

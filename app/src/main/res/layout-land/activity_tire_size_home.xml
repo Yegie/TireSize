@@ -69,7 +69,6 @@
 
 
                 <TextView
-                    android:text="@string/tire_all"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"

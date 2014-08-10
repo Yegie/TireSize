@@ -1,5 +1,7 @@
 package org.yegie.tiresize.app;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -44,6 +46,12 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
         if (pos.delta <= 0.1) {
 
+            for(int k = 0; k<objsFav.size();k++)
+                if(pos.equals(objsFav.get(k))){
+                    pos.fav = true;
+                    break;
+                }
+
             objs.add(pos);
 
         }
@@ -52,8 +60,15 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
     public void recalculate(){
         System.out.println("Recalculating wheels");
-        resetFav();
+    //    resetFav();
         objs.clear();
+
+        TextView textAll= (TextView) findViewById(R.id.TextAll);
+        if(diffRims){
+            textAll.setText("All tires within 10%");
+        }else{
+            textAll.setText(fixDec(rim)+"\" Rim Tires Within 10%");
+        }
 
         cube = 1;
 
@@ -257,12 +272,14 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
         if(index>=0) {
             objsFav.remove(index);
-            objs.get(index2).fav = false;
+            if(index2!=-1)
+                objs.get(index2).fav = false;
         }
         else {
             t.fav = true;
             objsFav.add(t);
-            objs.get(index2).fav = true;
+            if(index2!=-1)
+                objs.get(index2).fav = true;
         }
         adapter.notifyDataSetChanged();
         adapterFav.notifyDataSetChanged();
@@ -325,6 +342,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     }
 
     boolean diffRims;
+    final String helpMes = "Favorite a tire to see more information about it.\nToggle Diff Rims will toggle between showing only tires with the same rim and all rims.";
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -335,7 +353,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
         if (id == R.id.fav_reset) {
             Log.d(TAG, "Reseting Fav");
-            resetFav();
+
             return true;
         }
 
@@ -357,6 +375,25 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
             Log.d(TAG, "Sharing");
 
             shareText();
+
+            return true;
+        }
+
+        if (id == R.id.help) {
+            Log.d(TAG, "Halp me plox");
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setMessage(helpMes);
+            builder1.setCancelable(false);
+            builder1.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
 
             return true;
         }
