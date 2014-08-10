@@ -76,9 +76,13 @@ public class MyArrayAdapter extends ArrayAdapter {
 
         TireComp a = objs.get(i);
 
-        double b = Math.round(a.delta*1000)/10.0;
+
         TextView a_r_r= (TextView) vg.findViewById(R.id.width_ratio_rim);
-        a_r_r.setText(" "+a.current.width+"-"+a.current.ratio+"/"+TireSizeActivity.fixDec(a.current.rim)+"   Diff: "+b+"%");
+        a_r_r.setText(" "+a.current.width+"-"+a.current.ratio+"/"+TireSizeActivity.fixDec(a.current.rim));
+
+        TextView delta= (TextView) vg.findViewById(R.id.delta);
+        double b = Math.round(a.delta*1000)/10.0;
+        delta.setText("    Diff: "+b+"%");
 
         if(favList){
 

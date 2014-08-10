@@ -353,7 +353,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
         if (id == R.id.fav_reset) {
             Log.d(TAG, "Reseting Fav");
-
+            resetFav();
             return true;
         }
 
