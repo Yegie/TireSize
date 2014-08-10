@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/mph"
             android:visibility="gone"
+            android:textSize= "13sp"
             android:background="#fff"/>
 
         <TextView
@@ -48,6 +49,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/miles"
             android:visibility="gone"
+            android:textSize= "13sp"
             android:background="#fff"/>
 
     </LinearLayout>

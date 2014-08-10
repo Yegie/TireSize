@@ -21,31 +21,30 @@
 
         <TextView
             android:text="@string/tire_size_width"
+            android:paddingLeft="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/spinner"
-            android:layout_gravity="center_horizontal"
-            android:background="#fff"
-            android:gravity="center" />
+            android:background="#fff" />
 
         <TextView
             android:text="@string/tire_size_percentage"
+            android:paddingLeft="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/spinner2"
-            android:background="#fff"
-            android:gravity="center" />
+            android:background="#fff" />
 
         <TextView
             android:text="@string/tire_size_wheel"
+            android:paddingLeft="10dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:id="@+id/spinner3"
-            android:background="#fff"
-            android:gravity="center" />
+            android:background="#fff"/>
 
     </LinearLayout>
 
