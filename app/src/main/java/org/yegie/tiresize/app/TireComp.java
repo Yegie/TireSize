@@ -30,7 +30,7 @@ public class TireComp implements Comparable<TireComp>, Parcelable{
 
     private void calculate(){
 
-        delta   = Math.abs(current.diameter/userIn.diameter-1);
+        delta   = current.diameter/userIn.diameter-1;
         mph     = 50+50*delta;
         mileage = 1000-1000*delta;
 
@@ -39,9 +39,12 @@ public class TireComp implements Comparable<TireComp>, Parcelable{
     @Override
     public int compareTo(TireComp another) {
 
-        if(delta==another.delta)
+        double aba = Math.abs(delta);
+        double abb = Math.abs(another.delta);
+
+        if(aba==abb)
             return 0;
-        if(delta>another.delta)
+        if(aba> abb)
             return 1;
         else
             return -1;

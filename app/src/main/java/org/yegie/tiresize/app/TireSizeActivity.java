@@ -70,7 +70,10 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
             textAll.setText(fixDec(rim)+"\" Rim Tires Within 10%");
         }
 
-        cube = 1;
+        if(!turned) {
+            cube = 1;
+            turned = false;
+        }
 
         TireSize apple = new TireSize(width,ratio,rim);
         for(int i = 0;i<widths.length;i++){
@@ -224,7 +227,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     FixedListView fav;
     MyArrayAdapter adapter;
     MyArrayAdapter adapterFav;
-
+    boolean turned;
     int width;
     int ratio;
     double rim;
@@ -233,11 +236,12 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     protected void onRestoreInstanceState (Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
         objs = savedInstanceState.getParcelableArrayList("objs");
-        objsDisp = savedInstanceState.getParcelableArrayList("objsDisp");
         objsFav = savedInstanceState.getParcelableArrayList("objsFav");
         width = savedInstanceState.getInt("width");
         ratio = savedInstanceState.getInt("ratio");
         rim = savedInstanceState.getDouble("rim");
+        cube = savedInstanceState.getInt("cube");
+        turned = true;
         connectArrayAdapter();
         connectArrayAdapterFav();
     }
@@ -246,9 +250,9 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     protected void onSaveInstanceState(Bundle out){
         super.onSaveInstanceState(out);
         out.putParcelableArrayList("objs",objs);
-        out.putParcelableArrayList("objsDisp",objsDisp);
         out.putParcelableArrayList("objsFav",objsFav);
         out.putInt("width",width);
+        out.putInt("cube",cube);
         out.putInt("ratio",ratio);
         out.putDouble("rim", rim);
     }

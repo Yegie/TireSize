@@ -17,6 +17,13 @@
     <string name="toggle_rims">Toggle Diff Rims</string>
     <string name="share">Share Favorites</string>
     <string name="help">Help</string>
+    <string name="mph">50 mph would be</string>
+    <string name="miles">1000 miles would be</string>
+    <string name="diam">Diameter</string>
+    <string name="clea">Change in clearance</string>
+    <string name="wall">Wall</string>
+
+
 
     <string-array name="width_array">
         <item>Pick one</item>

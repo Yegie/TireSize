@@ -78,21 +78,30 @@ public class MyArrayAdapter extends ArrayAdapter {
 
 
         TextView a_r_r= (TextView) vg.findViewById(R.id.width_ratio_rim);
-        a_r_r.setText(" "+a.current.width+"-"+a.current.ratio+"/"+TireSizeActivity.fixDec(a.current.rim));
+        a_r_r.setText(a.current.width+"-"+a.current.ratio+"/"+TireSizeActivity.fixDec(a.current.rim));
 
         TextView delta= (TextView) vg.findViewById(R.id.delta);
         double b = Math.round(a.delta*1000)/10.0;
-        delta.setText("    Diff: "+b+"%");
+        delta.setText("Diff: "+b+"%");
 
         if(favList){
+            vg.findViewById(R.id.tableRow1).setVisibility(View.VISIBLE);
+            vg.findViewById(R.id.tableRow2).setVisibility(View.VISIBLE);
+            vg.findViewById(R.id.tableRow3).setVisibility(View.VISIBLE);
+            vg.findViewById(R.id.tableRow4).setVisibility(View.VISIBLE);
+            vg.findViewById(R.id.tableRow5).setVisibility(View.VISIBLE);
 
-            TextView mph= (TextView) vg.findViewById(R.id.mph);
-            mph.setVisibility(View.VISIBLE);
-            mph.setText("    50 mph would be "+String.format("%.2f",a.mph)+" mph");
 
-            TextView miles= (TextView) vg.findViewById(R.id.miles);
-            miles.setVisibility(View.VISIBLE);
-            miles.setText("    1000 miles would be "+String.format("%.2f",a.mileage)+" miles");
+
+            ((TextView)vg.findViewById(R.id.mph)).setText(String.format("%.2f",a.mph)+" mph");
+
+            ((TextView)vg.findViewById(R.id.miles)).setText(String.format("%.2f",a.mileage)+" miles");
+
+            ((TextView)vg.findViewById(R.id.diam)).setText(String.format("%.2f",a.current.diameter)+" in");
+
+            ((TextView)vg.findViewById(R.id.clea)).setText(String.format("%.2f",a.current.diameter-a.userIn.diameter)+" in");
+
+            ((TextView)vg.findViewById(R.id.wall)).setText(String.format("%.2f",a.current.wall_in)+" in");
 
         }
 
