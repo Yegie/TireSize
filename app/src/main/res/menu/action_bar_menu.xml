@@ -5,23 +5,23 @@
 
     <item android:id="@+id/help"
         android:title="@string/help"
-        android:orderInCategory="99"
+        android:orderInCategory="4"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/fav_reset"
         android:title="@string/fav_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="3"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/share"
         android:title="@string/share"
-        android:orderInCategory="101"
+        android:orderInCategory="1"
         app:showAsAction="ifRoom"
         android:icon="@drawable/abc_ic_menu_share_holo_dark"/>
 
     <item android:id="@+id/other_rims"
         android:title="@string/toggle_rims"
-        android:orderInCategory="102"
+        android:orderInCategory="2"
         app:showAsAction="ifRoom" />
 
 </menu>
