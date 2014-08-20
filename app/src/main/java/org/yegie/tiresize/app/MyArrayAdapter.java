@@ -78,7 +78,7 @@ public class MyArrayAdapter extends ArrayAdapter {
 
 
         TextView a_r_r= (TextView) vg.findViewById(R.id.width_ratio_rim);
-        a_r_r.setText(a.current.width+"-"+a.current.ratio+"/"+TireSizeActivity.fixDec(a.current.rim));
+        a_r_r.setText(a.current.width+"/"+a.current.ratio+"-"+TireSizeActivity.fixDec(a.current.rim));
 
         TextView delta= (TextView) vg.findViewById(R.id.delta);
         double b = Math.round(a.delta*1000)/10.0;
