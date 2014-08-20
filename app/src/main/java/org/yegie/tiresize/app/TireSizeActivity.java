@@ -426,9 +426,9 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
         for(int i = 0; i < objsFav.size();i++){
             TireSize a = objsFav.get(i).current;
             double b = Math.round(objsFav.get(i).delta*1000)/10.0;
-            text = text + "\n "+a.width+"-"+a.ratio+"/"+fixDec(a.rim)+" Diff: "+b+"%";
+            text = text + "\n "+a.width+"-"+a.ratio+"/"+fixDec(a.rim)+" (difference "+b+"%)";
         }
-        text+="\nTire Size Calculator found at https://play.google.com/store/apps/details?id=org.yegie.tiresize.app";
+        text+="\n\n-- \nTire Size Calculator - https://play.google.com/store/apps/details?id=org.yegie.tiresize.app";
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT,text);
 
