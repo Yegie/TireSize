@@ -415,6 +415,7 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
 
     }
 
+
     public void shareText(){
 
         Intent intent = new Intent();
