@@ -14,7 +14,7 @@
     <string name="tire_fav">Favorites</string>
     <string name="tire_all">All tires within 10%</string>
     <string name="fav_settings">Reset Favorites</string>
-    <string name="toggle_rims">Toggle Diff Rims</string>
+    <string name="toggle_rims">Toggle All Rims</string>
     <string name="share">Share Favorites</string>
     <string name="help">Help</string>
     <string name="mph">50 mph would be</string>

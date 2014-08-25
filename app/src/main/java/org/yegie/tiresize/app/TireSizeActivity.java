@@ -346,7 +346,11 @@ public class TireSizeActivity extends ActionBarActivity implements MyArrayAdapte
     }
 
     boolean diffRims;
-    final String helpMes = "Favorite a tire to see more information about it.\nToggle Diff Rims will toggle between showing only tires with the same rim and all rims.";
+    final String helpMes = "The current tire size is written on the side of the tire. It looks like three numbers – 205/55-16, 255/55R18, or similar.\n These numbers are the tire width in millimeters, the ratio of the tire width to the tire wall height, and the diameter of the wheel in inches.\n\n" +
+                           "Once you enter the current size you will see tires that are minimally different from it in the same wheel size. If you\nplan to change the wheel size use \"Toggle All Rims\" in the menu.\n\n" +
+                           "When you star a tire it is added to the favorites list, where more tire details are shown.\n\n" +
+                           "The list of favorites can then be shared by email, social media, or just stored in a note taking app.\n\n" +
+                           "<i>Note: Tire recommendations are calculated, but not checked against manufacturer databases. A tire you find may not\nbe available from any manufacturer, or might not fit your car for other reasons. Please use common sense and verify with a mechanic.</i>";
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
